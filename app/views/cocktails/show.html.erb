@@ -1,10 +1,17 @@
-<h1><%= @cocktail.name %></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo%>');">
+  <h1><%= @cocktail.name %></h1>
+</div>
+
+<div style="text-align: center; margin-bottom: 15px;">
+  <%= link_to "Add dose", new_cocktail_dose_path(@cocktail), class: "btn btn-lg btn-outline-success" %>
+  <%= link_to "Back to cocktails", cocktails_path, class: "btn btn-lg btn-outline-danger" %>
+</div>
+
 <% @cocktail.doses.each_with_index do |dose, index| %>
-<h3>Dose <%= index + 1 %> <%= link_to "🗑", dose_path(dose), method: :delete %></h3>
-<p><%= dose.description %></p>
-<p><%= dose.ingredient.name %></p>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Step <%= index + 1 %> <%= link_to "🗑", dose_path(dose), method: :delete %></strong></li>
+  <li class="list-group-item"><%= dose.description %></li>
+  <li class="list-group-item"><%= dose.ingredient.name %></li>
+</ul>
 <% end %>
 
-
-<%= link_to "Add dose", new_cocktail_dose_path(@cocktail), class: "btn btn-lg btn-outline-success" %>
-<%= link_to "Back to cocktails", cocktails_path, class: "btn btn-lg btn-outline-danger" %>

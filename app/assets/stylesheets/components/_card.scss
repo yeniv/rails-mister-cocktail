@@ -41,7 +41,6 @@
 
 .card-category {
   background-size: cover;
-  background-position: center;
   height: 180px;
   display: flex;
   justify-content: center;
@@ -53,6 +52,9 @@
   border-radius: 0px;
   box-shadow: 6px 6px 0px $gray;
   position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }
 
 .card-category a {

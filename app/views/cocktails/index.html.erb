@@ -3,18 +3,23 @@
 <div class="banner-container">
   <h1><span id="banner-typed-text"></span></h1>
   <br>
-  <%= link_to "Add a new cocktail", new_cocktail_path, class: "btn btn-lg btn btn-outline-primary" %>
+<button type="button" class="btn btn-lg btn btn-outline-primary" data-toggle="modal" data-target="#add-new-cocktail">
+  Add new cocktail
+</button>
 </div>
 
+<%= render 'modal' %>
 
 <div class="cards">
   <% @cocktails.each do |c| %>
-  <div class="card-category" style='background-color: <%= bg.sample %>'>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)),
+         url('<%= cl_image_path c.photo%>')">
     <%= c.name %>
     <%= link_to cocktail_path(c) do %>
     <span id="card-link"></span>
     <% end %>
   </div>
   <% end %>
-
 </div>
+
+
